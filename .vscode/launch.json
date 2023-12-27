@@ -1,0 +1,41 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Service: Launch & Attach server",
+            "type": "python",
+            "request": "launch",
+            "module": "flask",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "FLASK_APP": "app.py",
+                "FLASK_ENV": "development",
+                "FLASK_DEBUG": "0"
+            },
+            "args": [
+                "run", 
+                "--port=80", 
+                "--host=0.0.0.0", 
+                "--reload", 
+                "--debug"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "envFile": "${input:dotEnvFilePath}",
+            "preLaunchTask": "build chat service"
+        }, 
+        
+    ],
+    "inputs": [
+        {
+            "id": "dotEnvFilePath",
+            "type": "promptString",
+            "description": "Path to .env file",
+            "default": "${workspaceFolder}/.env"
+            
+        }
+    ]
+}
