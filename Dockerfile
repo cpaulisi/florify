@@ -1,9 +1,10 @@
 FROM node:16-alpine as build-step
 WORKDIR /app
-ENV PATH /app/frontend/node_modules/.bin:$PATH
-COPY ./frontend/package.json /app/frontend/package.json
-WORKDIR /app/frontend
+ENV PATH /app/florify/node_modules/.bin:$PATH
+COPY ./florify/package.json /app/florify/package.json
+WORKDIR /app/florify
 RUN npm install
+COPY ./florify /app/florify/
 RUN npm run build
 WORKDIR /app/
 
@@ -11,12 +12,12 @@ FROM python:3.11-slim-buster
 WORKDIR /app
 RUN apt-get update && \
     apt-get install -y python3-pip
-COPY --from=build-step /app/static /app/static
-COPY ./backend/ /app/backend/
+COPY --from=build-step /app/florify/dist /app/florify/dist
+# COPY ./backend/ /app/backend/
 COPY ./requirements.txt /app/
 COPY ./app.py /app/
 COPY ./scripts/loadenv.sh /app/scripts/
-RUN /app/scripts/loadenv.sh
+RUN chmod +x /app/scripts/loadenv.sh && /app/scripts/loadenv.sh
 ENV FLASK_ENV production
 EXPOSE 80
 WORKDIR /app
