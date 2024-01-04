@@ -28,5 +28,6 @@ if [ $? -ne 0 ]; then
     exit $?
 
 fi
+# run loadenv.sh
 cd ..
 . ./scripts/loadenv.sh
