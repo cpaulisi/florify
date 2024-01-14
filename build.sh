@@ -18,7 +18,7 @@ fi
 echo ""
 echo "Building frontend"
 echo ""
-nvm use node 
+npm install -g npm@10.3.0
 npm --version
 npm run build
 if [ $? -ne 0 ]; then

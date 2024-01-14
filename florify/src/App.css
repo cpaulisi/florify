@@ -5,6 +5,28 @@
   text-align: center;
 }
 
+.App-header {
+  /* Other styles... */
+  margin: 2vh 0; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-container {
+  width: 50vw;
+  height: 50vh;
+  overflow: auto;
+  padding: 2vw; /* This adds padding inside the .image-container equal to 2% of the viewport width */
+  border: 3px solid #000000; /* This sets the border width to 2 pixels, the style to solid, and the color to black */
+}
+
+.uploaded-image {
+  width: 100%; /* Adjust as needed */
+  height: 100%; /* Adjust as needed */
+  object-fit: contain; /* This will scale the image to fit the dimensions without distorting it */
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

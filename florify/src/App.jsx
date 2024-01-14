@@ -1,35 +1,43 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedImage, setSelectedImage] = useState(null);
+  
+
+  
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <div className="App">
+      <header className="App-header">
+        <img src={reactLogo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          Edit <code>src/App.js</code> and save to reload.
         </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+      <div>
+        <input type="file" accept="image/png" onChange={handleImageUpload} />
+        <div className="image-container">
+          {selectedImage && <img src={selectedImage} alt="Selected" class="uploaded-image" />}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      </div>
+      
+      <footer>
+        <img src={viteLogo} className="App-logo" alt="logo" />
+      </footer>
+      
+    </div>
+  );
 }
 
 export default App
